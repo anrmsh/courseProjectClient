@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #660066;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegistrationController">
+    <children>
+        <AnchorPane layoutY="109.0" prefHeight="492.0" prefWidth="700.0" style="-fx-background-color: ffeef4;">
+            <children>
+                <TextField fx:id="loginField" layoutX="239.0" layoutY="235.0" prefHeight="42.0" prefWidth="222.0" promptText="Введите логин" style="-fx-border-color: #660066; -fx-border-radius: 10;" />
+                <PasswordField fx:id="passwordField" layoutX="239.0" layoutY="297.0" prefHeight="42.0" prefWidth="222.0" promptText="Введите пароль" style="-fx-border-color: #660066; -fx-border-radius: 10;" />
+                <Button fx:id="SignUpButton" layoutX="239.0" layoutY="423.0" mnemonicParsing="false" onAction="#registrationUser" prefHeight="41.0" prefWidth="222.0" style="-fx-background-color: #660066;" text="Зарегистрироваться" textFill="#ffeef4">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                </Button>
+                <Button fx:id="backButton" layoutX="20.0" layoutY="424.0" mnemonicParsing="false" onAction="#backToAuth" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: #660066;" text="Назад" textFill="#ffeef4">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                </Button>
+            <TextField fx:id="nameField" layoutX="239.0" layoutY="44.0" prefHeight="42.0" prefWidth="222.0" promptText="Введите имя" style="-fx-border-color: #660066; -fx-border-radius: 10;" />
+            <TextField fx:id="lastNameField" layoutX="239.0" layoutY="111.0" prefHeight="42.0" prefWidth="222.0" promptText="Введите фамилию" style="-fx-border-color: #660066; -fx-border-radius: 10;" />
+            <TextField fx:id="mailField" layoutX="239.0" layoutY="178.0" prefHeight="42.0" prefWidth="222.0" promptText="Введите эл.почту" style="-fx-border-color: #660066; -fx-border-radius: 10;" />
+            <ComboBox fx:id="positionSelector" layoutX="488.0" layoutY="44.0" prefHeight="41.0" prefWidth="184.0" promptText="Роль" style="-fx-background-color: #FFEEF4; -fx-border-color: #660066; -fx-border-radius: 10;" visibleRowCount="5" />
+            <PasswordField fx:id="rptPasswordField" layoutX="239.0" layoutY="361.0" prefHeight="42.0" prefWidth="222.0" promptText="Подтвердите пароль" style="-fx-border-color: #660066; -fx-border-radius: 10;" />
+            <Label layoutX="189.0" layoutY="56.0" text="Имя:" />
+            <Label layoutX="178.0" layoutY="123.0" text="Фамилия:" />
+            <Label layoutX="184.0" layoutY="190.0" text="Эл.почта:" />
+            <Label layoutX="192.0" layoutY="247.0" text="Логин:" />
+            <Label layoutX="188.0" layoutY="310.0" text="Пароль:" />
+            </children>
+        </AnchorPane>
+        <Label layoutX="209.0" layoutY="26.0" prefHeight="56.0" prefWidth="281.0" text="РЕГИСТРАЦИЯ" textFill="#ffeef4">
+            <font>
+                <Font name="Bookman Old Style" size="35.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

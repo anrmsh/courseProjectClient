@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #660066;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminWorkUserController">
+    <children>
+        <AnchorPane layoutY="107.0" prefHeight="494.0" prefWidth="700.0" style="-fx-background-color: ffeef4;">
+            <children>
+                <Button fx:id="backButton" layoutX="223.0" layoutY="414.0" mnemonicParsing="false" onAction="#exitApplication" prefHeight="42.0" prefWidth="234.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Назад" textFill="#ffeef4">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                </Button>
+            <TableView fx:id="tableusers" layoutX="14.0" layoutY="50.0" prefHeight="330.0" prefWidth="658.0">
+              <columns>
+                <TableColumn prefWidth="100.79995536804199" text="Логин" />
+                <TableColumn prefWidth="101.60004425048828" text="Пароль" />
+                  <TableColumn prefWidth="87.199951171875" text="Имя" />
+                  <TableColumn prefWidth="96.0" text="Фамилия" />
+                  <TableColumn prefWidth="99.20001220703125" text="Почта" />
+                  <TableColumn prefWidth="83.19998168945312" text="Роль" />
+                  <TableColumn prefWidth="88.00003662109373" text="Доступ" />
+              </columns>
+            </TableView>
+            </children>
+        </AnchorPane>
+        <Label layoutX="164.0" prefHeight="56.0" prefWidth="402.0" text="Страница Администратора" textFill="#ffeef4">
+            <font>
+                <Font name="Bookman Old Style" size="28.0" />
+            </font>
+        </Label>
+        <Button fx:id="workUserBut" layoutX="199.0" layoutY="49.0" mnemonicParsing="false" onAction="#goToAuthorization" prefHeight="47.0" prefWidth="290.0" style="-fx-background-color: #660066;" text="Работа с пользователями">
+            <font>
+                <Font name="Bookman Old Style" size="20.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="1.0" endY="0.14015155850034766" startX="0.08333333062403131" startY="0.7424242839668737">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="1.0" green="0.5481481552124023" blue="0.7213580012321472" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.95686274766922" green="0.33725491166114807" blue="0.5647059082984924" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Button>
+    </children>
+</AnchorPane>

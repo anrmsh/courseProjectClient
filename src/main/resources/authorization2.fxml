@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #660066;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AuthorizationController">
+   <children>
+      <AnchorPane layoutY="109.0" prefHeight="492.0" prefWidth="700.0" style="-fx-background-color: ffeef4;">
+         <children>
+            <TextField fx:id="loginField" layoutX="238.0" layoutY="38.0" prefHeight="42.0" prefWidth="222.0" promptText="Введите логин или эл.почту" style="-fx-border-color: #660066; -fx-border-radius: 10;" />
+            <PasswordField fx:id="passwordField" layoutX="239.0" layoutY="99.0" prefHeight="42.0" prefWidth="222.0" promptText="Введите пароль" style="-fx-border-color: #660066; -fx-border-radius: 10;" />
+            <Button fx:id="authSignInButton" layoutX="239.0" layoutY="178.0" mnemonicParsing="false" onAction="#authorization" prefHeight="42.0" prefWidth="222.0" style="-fx-background-color: #660066;" text="Войти" textFill="#ffeef4">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+            <Button fx:id="loginSignUpButton" layoutX="239.0" layoutY="233.0" mnemonicParsing="false" onAction="#goToRegistration" prefHeight="41.0" prefWidth="222.0" style="-fx-background-color: #660066;" text="Зарегистрироваться" textFill="#ffeef4">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+            <Button fx:id="backButton" layoutX="20.0" layoutY="424.0" mnemonicParsing="false" onAction="#backToStartPage" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: #660066;" text="Назад" textFill="#ffeef4">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+            <Label layoutX="140.0" layoutY="50.0" text="Логин/эл.почта:" />
+            <Label layoutX="184.0" layoutY="111.0" text="Пароль:" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="209.0" layoutY="14.0" prefHeight="56.0" prefWidth="281.0" text="АВТОРИЗАЦИЯ" textFill="#ffeef4">
+         <font>
+            <Font name="Bookman Old Style" size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="158.0" layoutY="70.0" text="Если у Вас нет аккаунта, пройдите регистрацию" textFill="#ffeef4">
+         <font>
+            <Font name="Bookman Old Style" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
