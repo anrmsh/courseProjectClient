@@ -6,8 +6,12 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 import ClientWorker.Connect;
+import Enums.RequestType;
+import TCP.Request;
+import TCP.Response;
 import animations.Shake;
 import check.Dialog;
+import com.google.gson.Gson;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -186,27 +190,35 @@ public class AuthorizationController {
         user.setPassword(password);
 
         // Отправляем запрос на сервер
-        Connect.client.sendMessage("autorizationUser");
-        Connect.client.sendObject(user);
+        Request request = new Request();
+        request.setRequestType(RequestType.AUTHORIZATION);
+        request.setRequestMessage(new Gson().toJson(user));
+        Connect.client.sendObject(request);
+
+
+//        Connect.client.sendMessage("autorizationUser");
+//        Connect.client.sendObject(user);
+
 
         try {
-            String response = Connect.client.readMessage();
-
-            if ("Access Denied".equals(response)) {
+            //Response response = (Response) Connect.client.readObject();
+            //String response = Connect.client.readMessage();
+            String mes = Connect.client.readMessage();
+            if ("Access Denied".equals(mes)) {
                 Dialog.showAlertErrorAuth1("Доступ закрыт!");
-            } else if ("Incorrect Data".equals(response)) {
-                //Dialog.showAlertErrorAuth1("Неверные данные!");
-                Shake userLoginAnim = new Shake(loginField);
-                Shake userPasswordAnim = new Shake(passwordField);
-                userLoginAnim.playAnimation();
-                userPasswordAnim.playAnimation();
+            } else if ("Incorrect Data".equals(mes)) {
+                Dialog.showAlertErrorAuth1("Неверные данные!");
+//                Shake userLoginAnim = new Shake(loginField);
+//                Shake userPasswordAnim = new Shake(passwordField);
+//                userLoginAnim.playAnimation();
+//                userPasswordAnim.playAnimation();
 
             } else {
                 // Переход на соответствующее окно
                 authSignInButton.getScene().getWindow().hide();
                 FXMLLoader loader = new FXMLLoader();
 
-                switch (response) {
+                switch (mes) {
                     case "Администратор" -> loader.setLocation(getClass().getResource("/adminPage.fxml"));
                     case "Менеджер" -> loader.setLocation(getClass().getResource("/successRegistration.fxml"));
                     case "Бухгалтер" -> loader.setLocation(getClass().getResource("/successRegistration.fxml"));

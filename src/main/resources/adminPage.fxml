@@ -87,7 +87,7 @@
             </LinearGradient>
          </textFill>
       </Button>
-      <Button fx:id="catalogButt" layoutX="280.0" layoutY="49.0" mnemonicParsing="false" onAction="#goToAuthorization" prefHeight="56.0" prefWidth="274.0" style="-fx-background-color: #660066;" text="Управление товарами">
+      <Button fx:id="catalogButt" layoutX="280.0" layoutY="49.0" mnemonicParsing="false" onAction="#goToCatalogPage" prefHeight="56.0" prefWidth="274.0" style="-fx-background-color: #660066;" text="Управление товарами">
          <font>
             <Font name="Bookman Old Style" size="20.0" />
          </font>

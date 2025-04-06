@@ -1,4 +1,7 @@
 package controllers;
+import Enums.RequestType;
+import TCP.Request;
+import TCP.Response;
 import check.Dialog;
 import check.Check;
 
@@ -7,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import ClientWorker.Connect;
+import com.google.gson.Gson;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -159,6 +163,11 @@ public class RegistrationController {
             System.out.println("Роль не была выбрана.");
             return;
         }
+        else {
+            if(role.equals("Покупатель")){
+                user.setAccess(1);
+            }
+        }
 
 
         if(!password.equals(rptPassword)){
@@ -166,17 +175,19 @@ public class RegistrationController {
             return;
         }
 
-        Connect.client.sendMessage("registrationUser");
-        Connect.client.sendObject(user);
+        Request request = new Request();
+        request.setRequestType(RequestType.REGISTRATION);
+        request.setRequestMessage(new Gson().toJson(user));
+
+//        Connect.client.sendMessage("registrationUser");
+//        Connect.client.sendObject(user);
 
         System.out.println("Запись отправлена");
 
         String mes = "";
-        try {
-            mes = Connect.client.readMessage();
-        } catch(IOException ex){
-            System.out.println("Error in reading");
-        }
+        Response response = (Response) Connect.client.readObject();
+        mes = response.getResponseMessage();
+        //mes = Connect.client.readMessage();
         if(mes.equals("This user already exists!")){
             Dialog.showAlertWithExistLoginUser();
         } else{

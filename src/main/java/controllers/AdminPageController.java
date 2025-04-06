@@ -39,6 +39,29 @@ public class AdminPageController {
 
 
     @FXML
+    void goToCatalogPage(ActionEvent event) {
+        catalogButt.getScene().getWindow().hide();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/viewCatalog.fxml"));
+
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root,830,600));
+        stage.setTitle("Shop");
+        stage.show();
+
+    }
+
+
+    @FXML
     void backToAuth(ActionEvent event){
         exitButton.getScene().getWindow().hide();
 

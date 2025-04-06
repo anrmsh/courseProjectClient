@@ -1,5 +1,8 @@
 package check;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
+import java.util.Optional;
 
 public class Dialog {
     public static  void showAlertWithExistLoginUser(){
@@ -57,5 +60,31 @@ public class Dialog {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    public static void showAlertInfo(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Информация");
+        alert.setHeaderText("Информационное сообщение");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+
+    public static boolean showConfirmationDialog(String title, String header, String content) {//пробное подтверждение выхода
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+
+
+        ButtonType yesButton = new ButtonType("Да");
+        ButtonType noButton = new ButtonType("Нет");
+        alert.getButtonTypes().setAll(yesButton, noButton);
+
+
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.isPresent() && result.get() == yesButton;
+    }
+
 
 }
