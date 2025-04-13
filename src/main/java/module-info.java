@@ -4,7 +4,8 @@ module com.example.client {
     requires javafx.fxml;
     requires com.google.gson;
     requires javafx.base;
-    requires java.desktop;
+    requires javafx.graphics;
+    requires org.apache.poi.ooxml;
 
 
     exports main;

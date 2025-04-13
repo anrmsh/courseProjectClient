@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="702.0" style="-fx-background-color: #660066;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MakeOrderController">
+    <children>
+        <AnchorPane layoutY="63.0" prefHeight="542.0" prefWidth="702.0" style="-fx-background-color: ffeef4;">
+            <children>
+                <Button fx:id="backButton" layoutX="24.0" layoutY="496.0" mnemonicParsing="false" onAction="#goToCartCustomer" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Назад" textFill="#ffeef4">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="makeOrderButt" layoutX="216.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleConfirmOrder" prefHeight="38.0" prefWidth="270.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Оформить заказ" textAlignment="CENTER" textFill="#ffeef4" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <ListView fx:id="listToOrder" editable="true" layoutX="77.0" layoutY="25.0" prefHeight="281.0" prefWidth="546.0" />
+            <Label fx:id="totalAmountLabel" alignment="CENTER_RIGHT" layoutX="319.0" layoutY="313.0" prefHeight="19.0" prefWidth="304.0" text="Итого к оплате:">
+               <font>
+                  <Font name="Bookman Old Style" size="16.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="paymentMethodBox" layoutX="65.0" layoutY="373.0" prefHeight="26.0" prefWidth="185.0" promptText="Выберите способ оплаты" />
+            <Label layoutX="65.0" layoutY="345.0" prefHeight="19.0" prefWidth="129.0" text="Способ оплаты:" underline="true">
+               <font>
+                  <Font name="Bookman Old Style" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="304.0" layoutY="345.0" prefHeight="19.0" prefWidth="129.0" text="Доставка:" underline="true">
+               <font>
+                  <Font name="Bookman Old Style" size="16.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="radioButPickUp" layoutX="304.0" layoutY="368.0" mnemonicParsing="false" text="Самовывоз">
+               <font>
+                  <Font name="Bookman Old Style" size="15.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="radioButDelivery" layoutX="304.0" layoutY="393.0" mnemonicParsing="false" text="Доставка (100 BYN)">
+               <font>
+                  <Font name="Bookman Old Style" size="15.0" />
+               </font>
+            </RadioButton>
+            </children>
+        </AnchorPane>
+        <Button fx:id="workUserBut" layoutX="166.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="405.0" style="-fx-background-color: #660066;" text="Подтверждение заказа">
+            <font>
+                <Font name="Bookman Old Style" size="30.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="1.0" endY="0.14015155850034766" startX="0.08333333062403131" startY="0.7424242839668737">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="1.0" green="0.5481481552124023" blue="0.7213580012321472" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.95686274766922" green="0.33725491166114807" blue="0.5647059082984924" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Button>
+    </children>
+</AnchorPane>

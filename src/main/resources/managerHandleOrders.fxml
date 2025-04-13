@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="702.0" style="-fx-background-color: #660066;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ViewMyOrdersController">
+    <children>
+        <AnchorPane layoutY="63.0" prefHeight="547.0" prefWidth="702.0" style="-fx-background-color: ffeef4;">
+            <children>
+                <Button fx:id="backButton" layoutX="24.0" layoutY="477.0" mnemonicParsing="false" onAction="#goToMainPageCustomer" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Назад" textFill="#ffeef4">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <TableView fx:id="ordersTable" layoutX="58.0" layoutY="42.0" prefHeight="382.0" prefWidth="594.0">
+                    <columns>
+                        <TableColumn fx:id="orderIdCol" prefWidth="71.99996566772461" text="№ заказа" />
+                        <TableColumn fx:id="orderDateCol" prefWidth="136.0" text="Дата заказа" />
+                        <TableColumn fx:id="paymentCol" prefWidth="124.00001525878906" text="Оплата" />
+                        <TableColumn fx:id="totalCol" prefWidth="132.0" text="Общая сумма, BYN" />
+                        <TableColumn fx:id="statusCol" prefWidth="129.5999755859375" text="Статус" />
+                    </columns>
+                </TableView>
+            <Button fx:id="saveChangesBut" layoutX="498.0" layoutY="477.0" mnemonicParsing="false" onAction="#goToMainPageCustomer" prefHeight="38.0" prefWidth="183.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Сохранить изменения" textFill="#ffeef4">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            </children>
+        </AnchorPane>
+        <Button fx:id="workUserBut" layoutX="166.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="405.0" style="-fx-background-color: #660066;" text="Обработка заказов">
+            <font>
+                <Font name="Bookman Old Style" size="30.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="1.0" endY="0.14015155850034766" startX="0.08333333062403131" startY="0.7424242839668737">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="1.0" green="0.5481481552124023" blue="0.7213580012321472" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.95686274766922" green="0.33725491166114807" blue="0.5647059082984924" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Button>
+    </children>
+</AnchorPane>

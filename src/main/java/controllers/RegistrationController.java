@@ -163,11 +163,10 @@ public class RegistrationController {
             System.out.println("Роль не была выбрана.");
             return;
         }
-        else {
-            if(role.equals("Покупатель")){
+        else if(role.equals("Покупатель")){
                 user.setAccess(1);
             }
-        }
+
 
 
         if(!password.equals(rptPassword)){
@@ -178,16 +177,15 @@ public class RegistrationController {
         Request request = new Request();
         request.setRequestType(RequestType.REGISTRATION);
         request.setRequestMessage(new Gson().toJson(user));
-
-//        Connect.client.sendMessage("registrationUser");
-//        Connect.client.sendObject(user);
+        Connect.client.sendObject(request);
 
         System.out.println("Запись отправлена");
 
         String mes = "";
         Response response = (Response) Connect.client.readObject();
         mes = response.getResponseMessage();
-        //mes = Connect.client.readMessage();
+System.out.println(mes);
+
         if(mes.equals("This user already exists!")){
             Dialog.showAlertWithExistLoginUser();
         } else{

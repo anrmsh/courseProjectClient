@@ -1,6 +1,8 @@
 package controllers;
 
-import check.Dialog;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,15 +11,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
-public class AdminPageController {
+public class ManagerPageController {
 
     @FXML
-    private Button StatisticsBut;
+    private ResourceBundle resources;
 
     @FXML
-    private Button catalogButt;
+    private URL location;
 
     @FXML
     private Button exitButton;
@@ -26,27 +26,49 @@ public class AdminPageController {
     private Button mainButt;
 
     @FXML
-    private Button workUserBut;
+    private Button salesBut;
 
     @FXML
-    void exitApplication(ActionEvent event) {
-
-    }
+    private Button stockBut;
 
     @FXML
-    void goToAuthorization(ActionEvent event) {
-
-
-
-    }
-
-
-    @FXML
-    void goToCatalogPage(ActionEvent event) {
-        catalogButt.getScene().getWindow().hide();
+    void goToExit(ActionEvent event) {
+        exitButton.getScene().getWindow().hide();
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/adminWorkProducts.fxml"));
+        loader.setLocation(getClass().getResource("/startPage.fxml"));
+
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root,830,600));
+        stage.setTitle("Shop");
+        stage.show();
+    }
+
+    @FXML
+    void goToViewCatalog(ActionEvent event) {
+
+    }
+
+    @FXML
+    void initialize() {
+
+
+    }
+
+    @FXML
+    void goToRestockWarehouse(ActionEvent event) {
+        stockBut.getScene().getWindow().hide();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/managerRestock.fxml"));
 
 
         try {
@@ -63,46 +85,27 @@ public class AdminPageController {
 
     }
 
-
     @FXML
-    void backToAuth(ActionEvent event){
-        exitButton.getScene().getWindow().hide();
-        Dialog.showConfirmationDialog("Выход","Выход", "Вы действительно хотите выйти?");
+    void goToSales(ActionEvent event) {
+        salesBut.getScene().getWindow().hide();
+
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/authorization2.fxml"));
+        loader.setLocation(getClass().getResource("/managerSalesPage.fxml"));
+
 
         try {
             loader.load();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
         Parent root = loader.getRoot();
         Stage stage = new Stage();
-        stage.setScene(new Scene(root));
+        stage.setScene(new Scene(root,830,610));
+        stage.setTitle("Shop");
         stage.show();
-
-    }
-
-    @FXML
-    void goToWorkUserPage(ActionEvent event){
-        workUserBut.getScene().getWindow().hide();
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/adminWorkUserPage.fxml"));
-
-        try {
-            loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        Parent root = loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
-
     }
 
 
 }
+

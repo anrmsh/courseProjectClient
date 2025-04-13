@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="915.0" style="-fx-background-color: #660066;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerCartController">
+    <children>
+        <AnchorPane layoutY="64.0" prefHeight="542.0" prefWidth="915.0" style="-fx-background-color: ffeef4;">
+            <children>
+                <Button fx:id="backButton" layoutX="24.0" layoutY="496.0" mnemonicParsing="false" onAction="#goToMainPageCustomer" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Назад" textFill="#ffeef4">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Label fx:id="labelMessage" layoutX="599.0" layoutY="5.0" prefHeight="20.0" prefWidth="127.0" text="Добавлено в заказ:">
+                    <font>
+                        <Font size="14.0" />
+                    </font></Label>
+                <Button fx:id="addToOrderLst" layoutX="24.0" layoutY="395.0" mnemonicParsing="false" onAction="#addToOrderPreview" prefHeight="38.0" prefWidth="155.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Добавить в заказ" textAlignment="CENTER" textFill="#ffeef4" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <TableView fx:id="tableCartItems" layoutX="16.0" layoutY="14.0" prefHeight="370.0" prefWidth="513.0">
+                    <columns>
+                        <TableColumn fx:id="nameProductCol" prefWidth="181.5999755859375" text="Название" />
+                        <TableColumn fx:id="sellPriceCol" minWidth="0.0" prefWidth="127.20001220703125" text="Стоимость, BYN" />
+                        <TableColumn fx:id="amountCartCol" prefWidth="100.79998779296875" text="Количество, шт" />
+                  <TableColumn fx:id="totalCostCol" prefWidth="105.60003662109375" text="Итого, BYN" />
+                    </columns>
+                </TableView>
+                <VBox fx:id="allCategoriesBox" layoutX="16.0" layoutY="97.0" prefHeight="298.0" prefWidth="184.0" />
+            <ListView fx:id="listToOrder" editable="true" layoutX="597.0" layoutY="24.0" prefHeight="334.0" prefWidth="303.0" />
+            <Label fx:id="labelMessage1" layoutX="31.0" layoutY="445.0" text="Label">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="orderBut" layoutX="627.0" layoutY="452.0" mnemonicParsing="false" onAction="#goToMakeOrder" prefHeight="38.0" prefWidth="242.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Перейти к оформлению заказа" textAlignment="CENTER" textFill="#ffeef4" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="delFromCartBut" layoutX="341.0" layoutY="395.0" mnemonicParsing="false" onAction="#removeSelectedItemFromCart" prefHeight="38.0" prefWidth="166.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Удалить из корзины" textAlignment="CENTER" textFill="#ffeef4" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="totalOrderLabel" alignment="CENTER_RIGHT" layoutX="568.0" layoutY="364.0" prefHeight="26.0" prefWidth="331.0" text="asdfgh" textAlignment="RIGHT">
+               <font>
+                  <Font name="Bookman Old Style" size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="removeFromOrderLstButt" layoutX="609.0" layoutY="393.0" mnemonicParsing="false" onAction="#removeSelectedFromPreview" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Удалить" textAlignment="CENTER" textFill="#ffeef4" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="clearListOrderBut1" layoutX="780.0" layoutY="391.0" mnemonicParsing="false" onAction="#clearPreviewOrderList" prefHeight="38.0" prefWidth="117.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Очистить всё" textAlignment="CENTER" textFill="#ffeef4" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            </children>
+        </AnchorPane>
+        <Button fx:id="workUserBut" layoutX="230.0" layoutY="1.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="405.0" style="-fx-background-color: #660066;" text="Моя корзина">
+            <font>
+                <Font name="Bookman Old Style" size="30.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="1.0" endY="0.14015155850034766" startX="0.08333333062403131" startY="0.7424242839668737">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="1.0" green="0.5481481552124023" blue="0.7213580012321472" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.95686274766922" green="0.33725491166114807" blue="0.5647059082984924" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Button>
+    </children>
+</AnchorPane>

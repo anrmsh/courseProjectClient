@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.*;
 
 import ClientWorker.Connect;
+import ClientWorker.Session;
 import Enums.RequestType;
 import Enums.ResponseStatus;
 import TCP.Request;
@@ -25,9 +26,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import salonOrg.Category;
 import salonOrg.Product;
-import salonOrg.User;
 
-public class viewCatalogController {
+public class CustomerViewCatalogController {
 
     @FXML
     private ResourceBundle resources;
@@ -38,23 +38,23 @@ public class viewCatalogController {
     @FXML
     private VBox allCategoriesBox;
 
+
+
     @FXML
     private Button applyButt;
 
     @FXML
     private Button backButton;
 
-    @FXML
-    private TableColumn<Product, String> categoryCol;
-
-    @FXML
-    private TableColumn<Product, Double> costPurchaceCol;
+  
 
     @FXML
     private Label labelCategory;
 
     @FXML
     private Label labelMessage;
+
+    private ObservableList<Product> productsList;
 
     @FXML
     private Label labelMessage2;
@@ -79,9 +79,17 @@ public class viewCatalogController {
 
     @FXML
     private TableColumn<Product, String> nameProductCol;
+    @FXML
+    private TableColumn<Product, Integer> amountWarehouseCol;
 
     @FXML
-    private TableColumn<Product, Double> priceSellCol;
+    private TableColumn<Product, Double> sellPriceCol;
+
+    @FXML
+    private TableColumn<Product, String> categoryCol;
+
+    @FXML
+    private Button removeParamButt;
 
     @FXML
     private Button searchButt;
@@ -95,40 +103,10 @@ public class viewCatalogController {
     @FXML
     private TableView<Product> tableProducts;
 
-    private ObservableList<Product> productsList;
-
     @FXML
     private Button workUserBut;
 
-
-    @FXML
-    private Button removeParamButt;
-
-
-
-    @FXML
-    void goToMainPageAdmin(ActionEvent event) {
-        backButton.getScene().getWindow().hide();
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/adminWorkProducts.fxml"));
-
-
-        try {
-            loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        Parent root = loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root,830,600));
-        stage.setTitle("Shop");
-        stage.show();
-
-    }
-
-
+   
 
     @FXML
     void initialize() {
@@ -157,9 +135,9 @@ public class viewCatalogController {
             Product[] productsArray = new Gson().fromJson(products, Product[].class);
             productsList = FXCollections.observableArrayList(Arrays.asList(productsArray));
             nameProductCol.setCellValueFactory(new PropertyValueFactory<>("productName"));
-            priceSellCol.setCellValueFactory(new PropertyValueFactory<>("sellPrice"));
+            sellPriceCol.setCellValueFactory(new PropertyValueFactory<>("sellPrice"));
             categoryCol.setCellValueFactory(new PropertyValueFactory<>("category"));
-            costPurchaceCol.setCellValueFactory(new PropertyValueFactory<>("cost"));
+            amountWarehouseCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
             if(response2.getResponseStatus()== ResponseStatus.OK){
                 labelMessage.setVisible(false);
@@ -200,11 +178,23 @@ public class viewCatalogController {
                         });
                     }
                 }
+
             }
 
             tableProducts.setItems(productsList);
 
+            /**/
 
+            tableProducts.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2) { // Двойной щелчок для выбора
+                    Product selectedProduct = tableProducts.getSelectionModel().getSelectedItem();
+                    if (selectedProduct != null) {
+                        showPurchaseDialog(selectedProduct);
+                    }
+                }
+            });
+
+            /**/
 
         }
     }
@@ -219,7 +209,8 @@ public class viewCatalogController {
                 }
             }
         }
-        System.out.println("Выбранные категории: " + selectedCategoryIDs);        Map<String, Object> filterData = new HashMap<>();
+        System.out.println("Выбранные категории: " + selectedCategoryIDs);
+        Map<String, Object> filterData = new HashMap<>();
         filterData.put("categoryIds", selectedCategoryIDs);
 
         Double minPrice = null;
@@ -273,9 +264,9 @@ public class viewCatalogController {
             Product[] productsArray = new Gson().fromJson(products, Product[].class);
             productsList = FXCollections.observableArrayList(Arrays.asList(productsArray));
             nameProductCol.setCellValueFactory(new PropertyValueFactory<>("productName"));
-            priceSellCol.setCellValueFactory(new PropertyValueFactory<>("sellPrice"));
+            sellPriceCol.setCellValueFactory(new PropertyValueFactory<>("sellPrice"));
             categoryCol.setCellValueFactory(new PropertyValueFactory<>("category"));
-            costPurchaceCol.setCellValueFactory(new PropertyValueFactory<>("cost"));
+            amountWarehouseCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
             tableProducts.setItems(productsList);
 
@@ -304,9 +295,9 @@ public class viewCatalogController {
             Product[] productsArray = new Gson().fromJson(products, Product[].class);
             productsList = FXCollections.observableArrayList(Arrays.asList(productsArray));
             nameProductCol.setCellValueFactory(new PropertyValueFactory<>("productName"));
-            priceSellCol.setCellValueFactory(new PropertyValueFactory<>("sellPrice"));
+            sellPriceCol.setCellValueFactory(new PropertyValueFactory<>("sellPrice"));
             categoryCol.setCellValueFactory(new PropertyValueFactory<>("category"));
-            costPurchaceCol.setCellValueFactory(new PropertyValueFactory<>("cost"));
+            amountWarehouseCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
 
             tableProducts.setItems(productsList);
@@ -342,7 +333,125 @@ public class viewCatalogController {
     }
 
 
+    @FXML
+    void goToMainPageCustomer(ActionEvent event) {
+        backButton.getScene().getWindow().hide();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/customerPage.fxml"));
+
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root,830,600));
+        stage.setTitle("Shop");
+        stage.show();
+
+    }
 
 
 
+    /**/
+
+    private void showPurchaseDialog(Product product) {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Ввод количества");
+        dialog.setHeaderText("Введите количество для покупки товара: " + product.getProductName());
+        dialog.setContentText("Количество:");
+
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(quantity -> {
+            try {
+                int qty = Integer.parseInt(quantity);
+                if(qty>product.getQuantity()){
+                    showError("На складе нет такого количества. Всего доступно: " + product.getQuantity());
+                    return;
+                }
+                sendPurchaseRequest(product, qty);
+            } catch (NumberFormatException e) {
+                showError("Пожалуйста, введите корректное количество.");
+                return;
+            }
+        });
+    }
+
+    // Метод для отправки запроса на сервер
+    private void sendPurchaseRequest(Product product, int quantity) {
+        Request request = new Request();
+        request.setRequestType(RequestType.ADD_TO_CART);
+        Product productToAdd = new Product();
+
+        productToAdd.setProductName(product.getProductName());
+        productToAdd.setSellPrice(product.getSellPrice());
+        productToAdd.setCategory(product.getCategory());
+        productToAdd.setCost(product.getCost());
+
+        productToAdd.setQuantity(quantity);
+        System.out.println(Session.getUserLogin());
+
+        request.setRequestMessage(new Gson().toJson(productToAdd));
+        request.setUserLogin(Session.getUserLogin());
+        Connect.client.sendObject(request);
+
+        // Обработка ответа от сервера
+        Response response = (Response) Connect.client.readObject();
+        Dialog.showAlertInfo(response.getResponseMessage());
+
+        updateProductList();
+
+
+
+
+
+//        if (response.getResponseStatus() == ResponseStatus.OK) {
+//            showInfo("Покупка успешно завершена!");
+//        } else {
+//            showError("Ошибка при покупке товара." );
+//        }
+    }
+
+    private void showError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Ошибка");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+
+    private void showInfo(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Информация");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+
+    private void updateProductList() {
+        Request request = new Request();
+        request.setRequestType(RequestType.ADMIN_VIEW_CATALOG); // или другой тип, в зависимости от вашего текущего метода для получения продуктов
+        Connect.client.sendObject(request);
+        Response response = (Response) Connect.client.readObject();
+
+        if(response.getResponseStatus() == ResponseStatus.OK) {
+            String products = response.getResponseData();
+            Product[] productsArray = new Gson().fromJson(products, Product[].class);
+            productsList = FXCollections.observableArrayList(Arrays.asList(productsArray));
+            tableProducts.setItems(productsList);
+        } else {
+            labelMessage.setText("Не удалось обновить список продуктов.");
+            labelMessage.setVisible(true);
+        }
+    }
+
+
+    
 }
+

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="829.0" style="-fx-background-color: #660066;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ManagerRestockController">
+    <children>
+        <AnchorPane layoutY="64.0" prefHeight="542.0" prefWidth="830.0" style="-fx-background-color: ffeef4;">
+            <children>
+                <Button fx:id="backButton" layoutX="24.0" layoutY="496.0" mnemonicParsing="false" onAction="#goToMainPageCustomer" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Назад" textFill="#ffeef4">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Label fx:id="labelMessage" layoutX="222.0" layoutY="51.0" text="Label">
+                    <font>
+                        <Font size="14.0" />
+                    </font></Label>
+                <Button fx:id="applyButt" layoutX="14.0" layoutY="395.0" mnemonicParsing="false" onAction="#filterListProduct" prefHeight="26.0" prefWidth="106.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Применить" textAlignment="CENTER" textFill="#ffeef4" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <TableView fx:id="tableProducts" layoutX="204.0" layoutY="82.0" prefHeight="370.0" prefWidth="610.0">
+                    <columns>
+                        <TableColumn fx:id="nameProductCol" prefWidth="180.0" text="Название" />
+                        <TableColumn fx:id="categoryCol" prefWidth="166.4000244140625" text="Категория" />
+                        <TableColumn fx:id="sellPriceCol" minWidth="0.0" prefWidth="137.60003662109375" text="Цена закупки, BYN" />
+                        <TableColumn fx:id="amountWarehouseCol" prefWidth="129.59993896484377" text="В наличии, шт" />
+                    </columns>
+                </TableView>
+                <TextField fx:id="searchField" layoutX="263.0" layoutY="22.0" prefHeight="26.0" prefWidth="258.0" promptText="Введите для поиска" />
+                <Label fx:id="lableFilter" layoutX="18.0" layoutY="4.0" text="Фильтрация по цене:">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lableSearch" layoutX="263.0" layoutY="4.0" text="Поиск:">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="maxFilterValue" layoutX="134.0" layoutY="35.0" prefHeight="26.0" prefWidth="54.0" />
+                <TextField fx:id="minFilterValue" layoutX="37.0" layoutY="35.0" prefHeight="26.0" prefWidth="54.0" />
+                <Label fx:id="labelSort" layoutX="647.0" layoutY="4.0" text="Сортировать по:">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <ComboBox fx:id="sortBox" layoutX="647.0" layoutY="23.0" prefHeight="26.0" prefWidth="174.0" promptText="Выберите параметр" />
+                <Label fx:id="labelCategory" layoutX="23.0" layoutY="77.0" text="Категория товара:">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <VBox fx:id="allCategoriesBox" layoutX="16.0" layoutY="97.0" prefHeight="298.0" prefWidth="184.0" />
+                <Button fx:id="searchButt" layoutX="536.0" layoutY="16.0" mnemonicParsing="false" onAction="#searchProduct" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Поиск" textAlignment="CENTER" textFill="#ffeef4" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Label fx:id="labelMessage2" layoutX="7.0" layoutY="38.0" text="от:">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="labelMessage21" layoutX="108.0" layoutY="38.0" text="до:">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Button fx:id="removeParamButt" layoutX="13.0" layoutY="445.0" mnemonicParsing="false" onAction="#removeParamButt" prefHeight="20.0" prefWidth="174.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Сбросить параметры" textAlignment="CENTER" textFill="#ffeef4" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Label fx:id="labelMessage1" layoutX="394.0" layoutY="455.0" text="* Для пополнения товара дважды кликните на него">
+                    <font>
+                        <Font name="Bookman Old Style" size="15.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <Button fx:id="workUserBut" layoutX="230.0" layoutY="1.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="405.0" style="-fx-background-color: #660066;" text="Управление складом">
+            <font>
+                <Font name="Bookman Old Style" size="30.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="1.0" endY="0.14015155850034766" startX="0.08333333062403131" startY="0.7424242839668737">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="1.0" green="0.5481481552124023" blue="0.7213580012321472" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.95686274766922" green="0.33725491166114807" blue="0.5647059082984924" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Button>
+    </children>
+</AnchorPane>

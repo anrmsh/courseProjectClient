@@ -16,8 +16,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import salonOrg.User;
 import TCP.Request;
 import TCP.Response;
@@ -211,22 +215,45 @@ public class AdminWorkUserController {
     @FXML
     public void saveUserAccessChanged(ActionEvent event) {
 
-if(!modifiedUsers.isEmpty()) {
-    Request request = new Request();
-    request.setRequestType(RequestType.UPDATE_USER_ACCESS);
-    request.setRequestMessage(new Gson().toJson(modifiedUsers));
-    Connect.client.sendObject(request);
+        if(!modifiedUsers.isEmpty()) {
+            Request request = new Request();
+            request.setRequestType(RequestType.UPDATE_USER_ACCESS);
+            request.setRequestMessage(new Gson().toJson(modifiedUsers));
+            Connect.client.sendObject(request);
 
-    Response response = (Response) Connect.client.readObject();
-    if (response.getResponseStatus() == ResponseStatus.OK) {
-        labelMessage.setText("Данные успешно обновлены.");
-        labelMessage.setVisible(true);
-    } else{
-        labelMessage.setText("Ошибка при обновлении данных.");
-        labelMessage.setVisible(true);
-    }
-}
+            Response response = (Response) Connect.client.readObject();
+            if (response.getResponseStatus() == ResponseStatus.OK) {
+                labelMessage.setText("Данные успешно обновлены.");
+                labelMessage.setVisible(true);
+            } else{
+                labelMessage.setText("Ошибка при обновлении данных.");
+                labelMessage.setVisible(true);
+            }
+        }
 
     }
+
+    @FXML
+    void goToAdminPage(ActionEvent event) {
+        backButton.getScene().getWindow().hide();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/adminPage.fxml"));
+
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root,700,600));
+        stage.setTitle("Shop");
+        stage.show();
+
+    }
+
 
 }

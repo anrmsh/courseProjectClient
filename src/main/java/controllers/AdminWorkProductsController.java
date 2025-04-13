@@ -1,29 +1,42 @@
 package controllers;
 
-import check.Dialog;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
-public class AdminPageController {
+public class AdminWorkProductsController {
 
     @FXML
-    private Button StatisticsBut;
+    private ResourceBundle resources;
 
     @FXML
-    private Button catalogButt;
+    private URL location;
 
     @FXML
-    private Button exitButton;
+    private Button addBut;
 
     @FXML
-    private Button mainButt;
+    private Button backButton;
+
+    @FXML
+    private Button costBut;
+
+    @FXML
+    private Button editBut;
+
+    @FXML
+    private Label labelMessage;
+
+    @FXML
+    private Button viewCatalog;
 
     @FXML
     private Button workUserBut;
@@ -36,17 +49,20 @@ public class AdminPageController {
     @FXML
     void goToAuthorization(ActionEvent event) {
 
+    }
 
+    @FXML
+    void initialize() {
 
     }
 
 
     @FXML
-    void goToCatalogPage(ActionEvent event) {
-        catalogButt.getScene().getWindow().hide();
+    public void goToViewCatalog(ActionEvent event) {
+        viewCatalog.getScene().getWindow().hide();
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/adminWorkProducts.fxml"));
+        loader.setLocation(getClass().getResource("/viewCatalog.fxml"));
 
 
         try {
@@ -63,13 +79,32 @@ public class AdminPageController {
 
     }
 
+    @FXML
+    void goToAddProductPage(ActionEvent event) {
+        addBut.getScene().getWindow().hide();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/adminAddNewProduct.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root,830,600));
+        stage.setTitle("Shop");
+        stage.show();
+
+    }
 
     @FXML
-    void backToAuth(ActionEvent event){
-        exitButton.getScene().getWindow().hide();
-        Dialog.showConfirmationDialog("Выход","Выход", "Вы действительно хотите выйти?");
+    void goToMainPageAdmin(ActionEvent event){
+        backButton.getScene().getWindow().hide();
+
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/authorization2.fxml"));
+        loader.setLocation(getClass().getResource("/adminPage.fxml"));
 
         try {
             loader.load();
@@ -81,28 +116,7 @@ public class AdminPageController {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
-
     }
-
-    @FXML
-    void goToWorkUserPage(ActionEvent event){
-        workUserBut.getScene().getWindow().hide();
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/adminWorkUserPage.fxml"));
-
-        try {
-            loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        Parent root = loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
-
-    }
-
 
 }
+

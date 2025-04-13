@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="829.0" style="-fx-background-color: #660066;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminAddNewProductController">
+    <children>
+        <AnchorPane layoutY="64.0" prefHeight="538.0" prefWidth="830.0" style="-fx-background-color: ffeef4;">
+            <children>
+                <Button fx:id="backButton" layoutX="29.0" layoutY="468.0" mnemonicParsing="false" onAction="#goToMainPageAdmin" prefHeight="44.0" prefWidth="103.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Назад" textFill="#ffeef4">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </Button>
+                <Label fx:id="labelMessage" layoutX="389.0" layoutY="207.0" text="Label">
+                    <font>
+                        <Font name="ArnoPro-Display" size="18.0" />
+                    </font></Label>
+                <Button fx:id="addButton" layoutX="75.0" layoutY="335.0" mnemonicParsing="false" onAction="#addNewProduct" prefHeight="24.0" prefWidth="200.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Зарегистрировать" textAlignment="CENTER" textFill="#ffeef4" wrapText="true">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </Button>
+            <TextField fx:id="nameProductField" layoutX="64.0" layoutY="66.0" prefHeight="32.0" prefWidth="221.0" promptText="Введите наименование" />
+            <TextField fx:id="sellPriceField" layoutX="64.0" layoutY="135.0" prefHeight="32.0" prefWidth="221.0" promptText="Введите стоимость продажи" />
+            <TextField fx:id="costField" layoutX="64.0" layoutY="203.0" prefHeight="32.0" prefWidth="221.0" promptText="Введите цену закупки" />
+            <ComboBox fx:id="categoryBox" layoutX="65.0" layoutY="269.0" prefHeight="32.0" prefWidth="222.0" promptText="Выберите категорию" />
+            <Label layoutX="65.0" layoutY="40.0" text="Наименование товара:">
+               <font>
+                  <Font name="ArnoPro-Display" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="65.0" layoutY="111.0" text="Стоимость продажи:">
+               <font>
+                  <Font name="ArnoPro-Display" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="65.0" layoutY="179.0" text="Цена закупки товара:">
+               <font>
+                  <Font name="ArnoPro-Display" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="65.0" layoutY="245.0" text="Категория:">
+               <font>
+                  <Font name="ArnoPro-Display" size="19.0" />
+               </font>
+            </Label>
+            <ListView fx:id="infoListBox" editable="true" layoutX="415.0" layoutY="64.0" prefHeight="135.0" prefWidth="406.0" />
+            <Label layoutX="415.0" layoutY="40.0" text="Вы добавили:">
+               <font>
+                  <Font name="ArnoPro-Display" size="19.0" />
+               </font>
+            </Label>
+            </children>
+        </AnchorPane>
+        <Button fx:id="workUserBut" layoutX="230.0" layoutY="1.0" mnemonicParsing="false" onAction="#goToAuthorization" prefHeight="58.0" prefWidth="405.0" style="-fx-background-color: #660066;" text="Регистрация товара">
+            <font>
+                <Font name="Bookman Old Style" size="30.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="1.0" endY="0.14015155850034766" startX="0.08333333062403131" startY="0.7424242839668737">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="1.0" green="0.5481481552124023" blue="0.7213580012321472" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.95686274766922" green="0.33725491166114807" blue="0.5647059082984924" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Button>
+    </children>
+</AnchorPane>

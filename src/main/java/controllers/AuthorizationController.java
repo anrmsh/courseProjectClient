@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 import ClientWorker.Connect;
+import ClientWorker.Session;
 import Enums.RequestType;
 import TCP.Request;
 import TCP.Response;
@@ -51,87 +52,6 @@ public class AuthorizationController {
 
     @FXML
     void initialize() {
-//
-//        authSignInButton.setOnAction(event -> {
-////            String loginText = loginField.getText().trim();
-////            String loginPasswordText = passwordField.getText().trim();
-////            if (loginText.equals("") || loginPasswordText.equals("")) {
-////                loginUser(loginText,loginPasswordText);
-////            }
-////            else{
-////                System.out.println("login and password is empty Error");
-////            }
-//
-//            User user = new User();
-//            String inputLogOrEmail = loginField.getText().trim();
-//            String password = passwordField.getText().trim();
-//
-//            if(inputLogOrEmail.equals("") || password.equals("")){
-//                Dialog.showAlertNoDataInAuthForm();
-//            } else {
-//                user.setPassword(password);
-//
-//                String authType;
-//                if(inputLogOrEmail.contains("@")){
-//                    user.setEmail(inputLogOrEmail);
-//                    authType = "email";
-//                } else {
-//                    user.setLogin(inputLogOrEmail);
-//                    authType = "login";
-//                }
-//
-//                Connect.client.sendMessage("autorizationUser");
-//                Connect.client.sendObject(user);
-//
-//
-//
-//                try {
-//                    String response = Connect.client.readMessage();
-//                    if ("Success".equals(response)) {
-//                        System.out.println("Вход выполнен");
-//                        FXMLLoader loader = new FXMLLoader();
-//                        loader.setLocation(getClass().getResource("/successRegistration.fxml"));
-//                        Parent root = loader.getRoot();
-//                        Stage stage = new Stage();
-//                        stage.setScene(new Scene((root)));
-//                        stage.show();
-//                    } else {
-//                        Dialog.showAlertErrorAuth();
-//                        System.out.println("Неверные данные");
-//                    }
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//
-//
-//
-//           }
-//
-//
-//
-//
-//        });
-
-
-//loginSignUpButton.setOnAction(event -> {
-//    loginSignUpButton.getScene().getWindow().hide();
-//
-//    FXMLLoader loader = new FXMLLoader();
-//    loader.setLocation(getClass().getResource("/registration.fxml"));
-//
-//    try {
-//        loader.load();
-//    } catch (IOException e) {
-//        throw new RuntimeException(e);
-//    }
-//
-//    Parent root = loader.getRoot();
-//    Stage stage=new Stage();
-//    stage.setScene(new Scene(root));
-//    stage.show();
-//
-//
-//});
 
     }
 
@@ -172,6 +92,7 @@ public class AuthorizationController {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
+        Session.clear();
 
     }
 
@@ -196,37 +117,37 @@ public class AuthorizationController {
         Connect.client.sendObject(request);
 
 
-//        Connect.client.sendMessage("autorizationUser");
-//        Connect.client.sendObject(user);
-
-
         try {
-            //Response response = (Response) Connect.client.readObject();
-            //String response = Connect.client.readMessage();
+
             String mes = Connect.client.readMessage();
             if ("Access Denied".equals(mes)) {
                 Dialog.showAlertErrorAuth1("Доступ закрыт!");
             } else if ("Incorrect Data".equals(mes)) {
                 Dialog.showAlertErrorAuth1("Неверные данные!");
-//                Shake userLoginAnim = new Shake(loginField);
-//                Shake userPasswordAnim = new Shake(passwordField);
-//                userLoginAnim.playAnimation();
-//                userPasswordAnim.playAnimation();
+
 
             } else {
                 // Переход на соответствующее окно
                 authSignInButton.getScene().getWindow().hide();
                 FXMLLoader loader = new FXMLLoader();
+                Session.setCurrentUser(user);
 
                 switch (mes) {
                     case "Администратор" -> loader.setLocation(getClass().getResource("/adminPage.fxml"));
-                    case "Менеджер" -> loader.setLocation(getClass().getResource("/successRegistration.fxml"));
-                    case "Бухгалтер" -> loader.setLocation(getClass().getResource("/successRegistration.fxml"));
-                    case "Покупатель" -> loader.setLocation(getClass().getResource("/successRegistration.fxml"));
+                    case "Менеджер" -> loader.setLocation(getClass().getResource("/managerPage.fxml"));
+                    case "Бухгалтер" -> loader.setLocation(getClass().getResource("/accountantPage.fxml"));
+                    case "Покупатель" -> loader.setLocation(getClass().getResource("/customerPage.fxml"));
                     default -> loader.setLocation(getClass().getResource("/successRegistration.fxml"));
                 }
 
-                Parent root = loader.load();
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                Parent root = loader.getRoot();
+                //Parent root = loader.load();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.show();

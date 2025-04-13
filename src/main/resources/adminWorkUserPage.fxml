@@ -15,7 +15,7 @@
     <children>
         <AnchorPane layoutY="92.0" prefHeight="509.0" prefWidth="700.0" style="-fx-background-color: ffeef4;">
             <children>
-                <Button fx:id="backButton" layoutX="20.0" layoutY="414.0" mnemonicParsing="false" onAction="#exitApplication" prefHeight="56.0" prefWidth="110.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="На главную" textFill="#ffeef4">
+                <Button fx:id="backButton" layoutX="20.0" layoutY="414.0" mnemonicParsing="false" onAction="#goToAdminPage" prefHeight="56.0" prefWidth="110.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="На главную" textFill="#ffeef4">
                     <font>
                         <Font size="14.0" />
                     </font>

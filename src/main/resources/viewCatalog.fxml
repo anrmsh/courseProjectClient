@@ -57,7 +57,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <ComboBox fx:id="sortBox" layoutX="647.0" layoutY="23.0" prefHeight="26.0" prefWidth="156.0" promptText="Выберите параметр" />
+            <ComboBox fx:id="sortBox" layoutX="647.0" layoutY="23.0" prefHeight="26.0" prefWidth="174.0" promptText="Выберите параметр" />
             <Label fx:id="labelCategory" layoutX="23.0" layoutY="77.0" text="Категория товара:">
                <font>
                   <Font size="14.0" />

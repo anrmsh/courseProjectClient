@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="700.0" style="-fx-background-color: #660066;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ManagerPageController">
+    <children>
+        <AnchorPane layoutY="107.0" prefHeight="494.0" prefWidth="700.0" style="-fx-background-color: ffeef4;">
+            <children>
+                <Button fx:id="exitButton" layoutX="223.0" layoutY="414.0" mnemonicParsing="false" onAction="#goToExit" prefHeight="42.0" prefWidth="234.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Выход" textFill="#ffeef4">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+        <Button fx:id="mainButt" layoutX="29.0" layoutY="49.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="124.0" style="-fx-background-color: #660066;" text="Главная">
+            <font>
+                <Font name="Bookman Old Style" size="20.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="1.0" endY="0.14015155850034766" startX="0.08333333062403131" startY="0.7424242839668737">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="1.0" green="0.5481481552124023" blue="0.7213580012321472" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.95686274766922" green="0.33725491166114807" blue="0.5647059082984924" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Button>
+        <Label layoutX="197.0" prefHeight="56.0" prefWidth="330.0" text="Страница Менеджера" textFill="#ffeef4">
+            <font>
+                <Font name="Bookman Old Style" size="28.0" />
+            </font>
+        </Label>
+        <Button fx:id="stockBut" layoutX="241.0" layoutY="53.0" mnemonicParsing="false" onAction="#goToRestockWarehouse" prefHeight="47.0" prefWidth="242.0" style="-fx-background-color: #660066;" text="Управление складом">
+            <font>
+                <Font name="Bookman Old Style" size="20.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="1.0" endY="0.14015155850034766" startX="0.08333333062403131" startY="0.7424242839668737">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="1.0" green="0.5481481552124023" blue="0.7213580012321472" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.95686274766922" green="0.33725491166114807" blue="0.5647059082984924" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Button>
+        <Button fx:id="salesBut" layoutX="513.0" layoutY="49.0" mnemonicParsing="false" onAction="#goToSales" prefHeight="56.0" prefWidth="151.0" style="-fx-background-color: #660066;" text="Продажи">
+            <font>
+                <Font name="Bookman Old Style" size="20.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="1.0" endY="0.14015155850034766" startX="0.08333333062403131" startY="0.7424242839668737">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="1.0" green="0.5481481552124023" blue="0.7213580012321472" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.95686274766922" green="0.33725491166114807" blue="0.5647059082984924" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Button>
+    </children>
+</AnchorPane>
