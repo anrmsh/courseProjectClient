@@ -27,6 +27,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import salonOrg.ManagerReport;
+import salonOrg.OperationAccounter;
 
 public class ManagerMakeReportController {
 
@@ -131,15 +132,15 @@ public class ManagerMakeReportController {
 
             textCurrentDate.setText(LocalDate.now().toString());
 
-                printReportBut.setOnAction(event -> {
-                    if(textNameManeger.getText().equals("")){
-                        Dialog.showAlertInfo("Заполните ФИО работника, выполнившего отчёт");
-                        return;
-                    } else{
-                        generateExelReport(reportData, LocalDate.now(),textNameManeger.getText(),startDate,endDate);
-                    }
+            printReportBut.setOnAction(event -> {
+                if(textNameManeger.getText().equals("")){
+                    Dialog.showAlertInfo("Заполните ФИО работника, выполнившего отчёт");
+                    return;
+                } else{
+                    generateExelReport(reportData, LocalDate.now(),textNameManeger.getText(),startDate,endDate);
+                }
 
-                });
+            });
 
 
         }
@@ -200,21 +201,28 @@ public class ManagerMakeReportController {
             sheet.autoSizeColumn(i);
         }
 
-        try {
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Сохранить Excel отчёт");
-            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel (*.xlsx)", "*.xlsx"));
-            File file = fileChooser.showSaveDialog(null);
-            if (file != null) {
-                try (FileOutputStream fileOut = new FileOutputStream(file)) {
-                    workbook.write(fileOut);
-                    Dialog.showAlertInfo("Excel-отчёт успешно сохранён!");
-                }
-            }
-            workbook.close();
+        try (FileOutputStream fileOut = new FileOutputStream("sales_report_" + LocalDate.now() + ".xlsx")) {
+            workbook.write(fileOut);
+            Dialog.showAlertInfo("Excel-отчёт успешно создан!");
         } catch (IOException e) {
             Dialog.showAlert("ERROR", "Ошибка при сохранении отчёта");
         }
+
+//        try {
+//            FileChooser fileChooser = new FileChooser();
+//            fileChooser.setTitle("Сохранить Excel отчёт");
+//            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel (*.xlsx)", "*.xlsx"));
+//            File file = fileChooser.showSaveDialog(null);
+//            if (file != null) {
+//                try (FileOutputStream fileOut = new FileOutputStream(file)) {
+//                    workbook.write(fileOut);
+//                    Dialog.showAlertInfo("Excel-отчёт успешно сохранён!");
+//                }
+//            }
+//            workbook.close();
+//        } catch (IOException e) {
+//            Dialog.showAlert("ERROR", "Ошибка при сохранении отчёта");
+//        }
 
     }
 

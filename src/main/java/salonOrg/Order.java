@@ -17,6 +17,7 @@ public class Order implements Serializable {
     public Order() {
         this.orderState = new OrderState();
        this.orderState.setOrderStateId(1);
+       this.payment=new Payment();
     }
 
     public int getOrderId() {

@@ -47,7 +47,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button fx:id="handleOrdersBut" layoutX="141.0" layoutY="409.0" mnemonicParsing="false" onAction="#goToMakeReport" prefHeight="38.0" prefWidth="274.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Обработать заказы" textAlignment="CENTER" textFill="#ffeef4" wrapText="true">
+            <Button fx:id="handleOrdersBut" layoutX="141.0" layoutY="409.0" mnemonicParsing="false" onAction="#goToHandleOrder" prefHeight="38.0" prefWidth="274.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Обработать заказы" textAlignment="CENTER" textFill="#ffeef4" wrapText="true">
                <font>
                   <Font size="15.0" />
                </font>

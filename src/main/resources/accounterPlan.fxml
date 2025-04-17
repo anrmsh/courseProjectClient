@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="915.0" style="-fx-background-color: #660066;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AccounterPlanController">
+    <children>
+        <AnchorPane layoutY="64.0" prefHeight="542.0" prefWidth="915.0" style="-fx-background-color: ffeef4;">
+            <children>
+                <Button fx:id="backButton" layoutX="23.0" layoutY="489.0" mnemonicParsing="false" onAction="#goToMainPageAccounter" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Назад" textFill="#ffeef4">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <TableView fx:id="tableOperations" layoutX="247.0" layoutY="26.0" prefHeight="405.0" prefWidth="526.0">
+                    <columns>
+                        <TableColumn fx:id="dateColumn" prefWidth="161.59998321533203" text="Дата" />
+                        <TableColumn fx:id="typeColumn" prefWidth="186.4000244140625" text="Тип операции" />
+                        <TableColumn fx:id="amountColumn" prefWidth="176.79995727539062" text="Сумма, BYN" />
+                    </columns>
+                </TableView>
+            <DatePicker fx:id="dateFromPicker" layoutX="26.0" layoutY="86.0" prefHeight="26.0" prefWidth="153.0" />
+            <DatePicker fx:id="dateToPicker" layoutX="26.0" layoutY="128.0" prefHeight="26.0" prefWidth="153.0" />
+            <Label layoutX="24.0" layoutY="37.0" text="Выбрать период:">
+               <font>
+                  <Font name="Bookman Old Style" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="90.0" text="с:">
+               <font>
+                  <Font name="Bookman Old Style" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="2.0" layoutY="132.0" text="по:">
+               <font>
+                  <Font name="Bookman Old Style" size="15.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="incomeCheckBox" layoutX="41.0" layoutY="218.0" mnemonicParsing="false" text="Доходы">
+               <font>
+                  <Font name="Bookman Old Style" size="15.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="expenseCheckBox" layoutX="41.0" layoutY="250.0" mnemonicParsing="false" text="Расходы">
+               <font>
+                  <Font name="Bookman Old Style" size="15.0" />
+               </font>
+            </CheckBox>
+            <Label layoutX="12.0" layoutY="189.0" text="Выбрать тип операции:">
+               <font>
+                  <Font name="Bookman Old Style" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="247.0" layoutY="443.0" prefHeight="38.0" prefWidth="172.0" text="Баланс на выбранный период, BYN:" wrapText="true">
+               <font>
+                  <Font name="Bookman Old Style" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="balanceField" layoutX="428.0" layoutY="449.0" />
+            <Button fx:id="applyBut" layoutX="30.0" layoutY="306.0" mnemonicParsing="false" onAction="#loadDataforReport" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Применить" textFill="#ffeef4">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            </children>
+        </AnchorPane>
+        <Button fx:id="workUserBut" layoutX="255.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="405.0" style="-fx-background-color: #660066;" text="План счетов">
+            <font>
+                <Font name="Bookman Old Style" size="30.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="1.0" endY="0.14015155850034766" startX="0.08333333062403131" startY="0.7424242839668737">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="1.0" green="0.5481481552124023" blue="0.7213580012321472" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.95686274766922" green="0.33725491166114807" blue="0.5647059082984924" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Button>
+    </children>
+</AnchorPane>

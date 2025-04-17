@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="829.0" style="-fx-background-color: #660066;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminMakeDiscountController">
+    <children>
+        <AnchorPane layoutY="64.0" prefHeight="542.0" prefWidth="830.0" style="-fx-background-color: ffeef4;">
+            <children>
+                <Button fx:id="backButton" layoutX="20.0" layoutY="486.0" mnemonicParsing="false" onAction="#goToMainPageAdmin" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="На главную" textFill="#ffeef4">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <TableView fx:id="tableProducts" layoutX="20.0" layoutY="24.0" prefHeight="395.0" prefWidth="613.0">
+                    <columns>
+                        <TableColumn fx:id="nameProductCol" prefWidth="192.0000762939453" text="Название" />
+                        <TableColumn fx:id="categoryCol" prefWidth="166.39996337890625" text="Категория" />
+                        <TableColumn fx:id="costPurchaceCol" minWidth="0.0" prefWidth="123.2000732421875" text="Цена закупки BYN" />
+                        <TableColumn fx:id="priceSellCol" prefWidth="129.59993896484377" text="Цена продажи BYN" />
+                    </columns>
+                </TableView>
+                <Label fx:id="labelSort" layoutX="647.0" layoutY="4.0" text="Сортировать по:">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <ComboBox fx:id="sortBox" layoutX="647.0" layoutY="23.0" prefHeight="26.0" prefWidth="174.0" promptText="Выберите параметр" />
+            <Label fx:id="labelSort1" layoutX="20.0" layoutY="426.0" text="*Для изменения цены продажи, нажмите на товар">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            </children>
+        </AnchorPane>
+        <Button fx:id="workUserBut" layoutX="230.0" layoutY="1.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="405.0" style="-fx-background-color: #660066;" text="Скидки/Наценки">
+            <font>
+                <Font name="Bookman Old Style" size="30.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="1.0" endY="0.14015155850034766" startX="0.08333333062403131" startY="0.7424242839668737">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="1.0" green="0.5481481552124023" blue="0.7213580012321472" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.95686274766922" green="0.33725491166114807" blue="0.5647059082984924" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Button>
+    </children>
+</AnchorPane>

@@ -3,57 +3,57 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
-<?import javax.sound.sampled.Line?>
-<?import javafx.scene.layout.StackPane?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="829.0" style="-fx-background-color: #660066;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ManagerSalesController">
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.ManagerHandleOrdersController" prefWidth="600" prefHeight="500">
     <children>
-        <AnchorPane layoutY="64.0" prefHeight="542.0" prefWidth="830.0" style="-fx-background-color: #ffeef4;">
-            <children>
+        <VBox spacing="10" layoutX="30" layoutY="20" prefWidth="540">
 
-                <!-- Прозрачная кнопка 1 -->
-                <StackPane layoutX="100.0" layoutY="200.0">
-                    <Button fx:id="transparentButton1" mnemonicParsing="false"  prefHeight="38.0" prefWidth="141.0" style="-fx-background-color: transparent; -fx-text-fill: #ff66cc;" text="Кнопка 1">
-                        <font>
-                            <Font size="15.0" />
-                        </font>
-                    </Button>
+            <Label text="Финансовый отчет" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
 
-                </StackPane>
+            <GridPane hgap="10" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="150"/>
+                    <ColumnConstraints minWidth="300"/>
+                </columnConstraints>
 
-                <!-- Прозрачная кнопка 2 -->
-                <StackPane layoutX="100.0" layoutY="250.0">
-                    <Button fx:id="transparentButton2" mnemonicParsing="false"  prefHeight="38.0" prefWidth="141.0" style="-fx-background-color: transparent; -fx-text-fill: #ff66cc;" text="Кнопка 2">
-                        <font>
-                            <Font size="15.0" />
-                        </font>
-                    </Button>
 
-                </StackPane>
+                <Label text="Доход:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="revenueField" editable="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
-                <Button fx:id="backButton" layoutX="24.0" layoutY="496.0" mnemonicParsing="false" onAction="#goToMainPageCustomer" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Назад" textFill="#ffeef4">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Button>
-                <Button fx:id="createReportBut" layoutX="625.0" layoutY="489.0" mnemonicParsing="false" onAction="#removeParamButt" prefHeight="38.0" prefWidth="141.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Составить отчёт" textAlignment="CENTER" textFill="#ffeef4" wrapText="true">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Button>
-                <Label fx:id="labelSort1" layoutX="464.0" layoutY="294.0">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </Label>
-            </children>
-        </AnchorPane>
+                <Label text="Расход:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="expenseField" editable="false" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Прочие расходы:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="otherExpensesField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Label text="Ставка налога (%):" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="taxRateField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <Label text="Налог:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="taxField" editable="false" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                <Label text="Чистая прибыль:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <TextField fx:id="netProfitField" editable="false" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+                <Label text="Рентабельность (%):" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                <TextField fx:id="profitabilityField" editable="false" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <Button text="Сформировать отчет" />
+            <TextArea fx:id="recommendationArea" editable="false" prefHeight="100"/>
+        </VBox>
     </children>
-    </AnchorPane>
-
+</AnchorPane>
 

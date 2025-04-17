@@ -6,6 +6,7 @@ module com.example.client {
     requires javafx.base;
     requires javafx.graphics;
     requires org.apache.poi.ooxml;
+    requires java.desktop;
 
 
     exports main;

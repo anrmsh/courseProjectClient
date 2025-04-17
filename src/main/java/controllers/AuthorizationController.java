@@ -133,9 +133,9 @@ public class AuthorizationController {
                 Session.setCurrentUser(user);
 
                 switch (mes) {
-                    case "Администратор" -> loader.setLocation(getClass().getResource("/adminPage.fxml"));
+                    case "Администратор" -> loader.setLocation(getClass().getResource("/adminMakeDiscount.fxml")); //adminPage
                     case "Менеджер" -> loader.setLocation(getClass().getResource("/managerPage.fxml"));
-                    case "Бухгалтер" -> loader.setLocation(getClass().getResource("/accountantPage.fxml"));
+                    case "Бухгалтер" -> loader.setLocation(getClass().getResource("/accounterReport.fxml"));
                     case "Покупатель" -> loader.setLocation(getClass().getResource("/customerPage.fxml"));
                     default -> loader.setLocation(getClass().getResource("/successRegistration.fxml"));
                 }
@@ -143,7 +143,7 @@ public class AuthorizationController {
                 try {
                     loader.load();
                 } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    e.printStackTrace();
                 }
 
                 Parent root = loader.getRoot();

@@ -8,7 +8,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="700.0" style="-fx-background-color: #660066;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ManagerPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="700.0" style="-fx-background-color: #660066;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AccounterPageController">
     <children>
         <AnchorPane layoutY="107.0" prefHeight="494.0" prefWidth="700.0" style="-fx-background-color: ffeef4;">
             <children>
@@ -45,7 +45,7 @@
                 <Font name="Bookman Old Style" size="28.0" />
             </font>
         </Label>
-        <Button fx:id="stockBut" layoutX="236.0" layoutY="53.0" mnemonicParsing="false" onAction="#goToRestockWarehouse" prefHeight="47.0" prefWidth="192.0" style="-fx-background-color: #660066;" text="План счетов">
+        <Button fx:id="planBut" layoutX="236.0" layoutY="53.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="192.0" style="-fx-background-color: #660066;" text="План счетов">
             <font>
                 <Font name="Bookman Old Style" size="20.0" />
             </font>
@@ -66,7 +66,7 @@
                 </LinearGradient>
             </textFill>
         </Button>
-        <Button fx:id="salesBut" layoutX="480.0" layoutY="49.0" mnemonicParsing="false" onAction="#goToSales" prefHeight="56.0" prefWidth="184.0" style="-fx-background-color: #660066;" text="Бух.отчетность">
+        <Button fx:id="reportBut" layoutX="480.0" layoutY="49.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="184.0" style="-fx-background-color: #660066;" text="Бух.отчетность">
             <font>
                 <Font name="Bookman Old Style" size="20.0" />
             </font>

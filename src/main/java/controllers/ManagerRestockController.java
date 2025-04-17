@@ -24,8 +24,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import salonOrg.Category;
 import salonOrg.Product;
+import salonOrg.Warehouse;
 
 public class ManagerRestockController {
 
@@ -112,7 +114,7 @@ public class ManagerRestockController {
     @FXML
     void initialize() {
         labelMessage.setVisible(false);
-        sortBox.getItems().addAll("По цене продажи ↑", "По цене продажи ↓", "По алфавиту");
+        sortBox.getItems().addAll("По кол-ву остатков ↑", "По кол-ву остатков ↓", "По алфавиту");
 
         sortBox.setOnAction(event -> {sortListProduct();});
         Request request = new Request();
@@ -139,6 +141,35 @@ public class ManagerRestockController {
             sellPriceCol.setCellValueFactory(new PropertyValueFactory<>("cost"));
             categoryCol.setCellValueFactory(new PropertyValueFactory<>("category"));
             amountWarehouseCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+
+            /**/
+            amountWarehouseCol.setCellFactory(new Callback<TableColumn<Product, Integer>, TableCell<Product, Integer>>() {
+                @Override
+                public TableCell<Product, Integer> call(TableColumn<Product, Integer> param) {
+                    return new TableCell<Product, Integer>() {
+                        @Override
+                        protected void updateItem(Integer item, boolean empty) {
+                            super.updateItem(item, empty);
+                            if (empty || item == null) {
+                                setText(null);
+                                setStyle(""); // сбрасываем стиль
+                            } else {
+                                setText(item.toString());
+                                // Условия для изменения цвета фона
+                                if (item < 3) {
+                                    setStyle("-fx-background-color: rgba(255, 0, 0, 0.5);"); // Полупрозрачный красный
+                                } else {
+                                    setStyle(""); // сбрасываем стиль
+                                }
+                            }
+                        }
+                    };
+                }
+            });
+
+
+            /**/
+
 
             if(response2.getResponseStatus()== ResponseStatus.OK){
                 labelMessage.setVisible(false);
@@ -312,12 +343,13 @@ public class ManagerRestockController {
 
         if(selectedSort!=null){
             switch (selectedSort) {
-                case "По цене продажи ↑":
-                    productsList.sort(Comparator.comparingDouble(Product::getSellPrice));
+                case "По кол-ву остатков ↑":
+                    productsList.sort(Comparator.comparingDouble(Product::getQuantity));
+
                     break;
 
-                case "По цене продажи ↓":
-                    productsList.sort(Comparator.comparingDouble(Product::getSellPrice).reversed());
+                case "По кол-ву остатков ↓":
+                    productsList.sort(Comparator.comparingDouble(Product::getQuantity).reversed());
                     break;
 
                 case "По алфавиту":
@@ -355,24 +387,6 @@ public class ManagerRestockController {
         stage.show();
 
     }
-
-//    private void showPurchaseDialog(Product product) {
-//        TextInputDialog dialog = new TextInputDialog();
-//        dialog.setTitle("Ввод количества");
-//        dialog.setHeaderText("Введите количество для закупки товара" + product.getProductName() + " на склад:");
-//        dialog.setContentText("Количество:");
-//
-//        Optional<String> result = dialog.showAndWait();
-//        result.ifPresent(quantity -> {
-//            try {
-//                int qty = Integer.parseInt(quantity);
-//
-//                sendRestockRequest(product, qty);
-//            } catch (NumberFormatException e) {
-//                showError("Пожалуйста, введите корректное количество.");
-//            }
-//        });
-//    }
 
 
     private void showPurchaseDialog(Product product) {

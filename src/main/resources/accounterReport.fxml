@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="829.0" style="-fx-background-color: #660066;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AccounterReportController">
+    <children>
+        <AnchorPane layoutY="64.0" prefHeight="542.0" prefWidth="830.0" style="-fx-background-color: ffeef4;">
+            <children>
+                <Button fx:id="backButton" layoutX="24.0" layoutY="496.0" mnemonicParsing="false" onAction="#goToMainPageAccounter" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Назад" textFill="#ffeef4">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="printReportBut" layoutX="688.0" layoutY="489.0" mnemonicParsing="false" onAction="#printReport" prefHeight="38.0" prefWidth="128.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Распечатать" textAlignment="CENTER" textFill="#ffeef4" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Label fx:id="labelSort1" layoutX="464.0" layoutY="294.0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="31.0" layoutY="46.0" prefHeight="26.0" prefWidth="91.0" text="Доход, BYN:" wrapText="true">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="taxRateField" layoutX="162.0" layoutY="236.0" prefHeight="26.0" prefWidth="150.0" promptText="Введите число" />
+                <Label layoutX="421.0" layoutY="177.0" prefHeight="42.0" prefWidth="42.0" text="Дата:" wrapText="true">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="textCurrentDate" layoutX="412.0" layoutY="216.0" prefHeight="26.0" prefWidth="128.0" />
+                <Label layoutX="551.0" layoutY="179.0" prefHeight="38.0" prefWidth="150.0" text="Отчёт составил:" wrapText="true">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="textNameAccounter" layoutX="551.0" layoutY="215.0" prefHeight="26.0" prefWidth="180.0" promptText="Ваше ФИО" />
+            <Label layoutX="31.0" layoutY="104.0" prefHeight="26.0" prefWidth="91.0" text="Расход, BYN:" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="164.0" prefHeight="42.0" prefWidth="91.0" text="Прочие расходы, BYN:" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="228.0" prefHeight="42.0" prefWidth="137.0" text="Ставка налога (%):" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="283.0" prefHeight="42.0" prefWidth="137.0" text="Налог, BYN:" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="333.0" prefHeight="42.0" prefWidth="137.0" text="Чистая прибыль, BYN:" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="381.0" prefHeight="42.0" prefWidth="137.0" text="Рентабельность (%):" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="revenueField" layoutX="162.0" layoutY="46.0" prefHeight="26.0" prefWidth="150.0" />
+            <TextField fx:id="expenseField" layoutX="162.0" layoutY="104.0" prefHeight="26.0" prefWidth="150.0" />
+            <TextField fx:id="otherExpensesField" layoutX="162.0" layoutY="172.0" prefHeight="26.0" prefWidth="150.0" promptText="Введите число в ден.ед" />
+            <TextField fx:id="efficiencyField" layoutX="162.0" layoutY="388.0" prefHeight="26.0" prefWidth="150.0" />
+            <TextField fx:id="taxField" layoutX="162.0" layoutY="291.0" prefHeight="26.0" prefWidth="150.0" />
+            <TextField fx:id="profitField" layoutX="162.0" layoutY="341.0" prefHeight="26.0" prefWidth="150.0" />
+            <TextArea fx:id="recomendationArea" layoutX="412.0" layoutY="45.0" prefHeight="118.0" prefWidth="370.0" promptText="Введите рекомендации/пояснения при необходимости" />
+            <Label layoutX="412.0" layoutY="14.0" prefHeight="26.0" prefWidth="128.0" text="Рекомендации:" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="applyBut" layoutX="357.0" layoutY="382.0" mnemonicParsing="false" onAction="#loadDataforFinReport" prefHeight="38.0" prefWidth="128.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Рассчитать" textAlignment="CENTER" textFill="#ffeef4" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            </children>
+        </AnchorPane>
+        <Button fx:id="workUserBut" layoutX="230.0" layoutY="1.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="405.0" style="-fx-background-color: #660066;" text="Финансовый отчёт">
+            <font>
+                <Font name="Bookman Old Style" size="30.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="1.0" endY="0.14015155850034766" startX="0.08333333062403131" startY="0.7424242839668737">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="1.0" green="0.5481481552124023" blue="0.7213580012321472" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.95686274766922" green="0.33725491166114807" blue="0.5647059082984924" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Button>
+    </children>
+</AnchorPane>

@@ -43,6 +43,10 @@ public class ManagerSalesController {
     @FXML
     private Button createReportBut;
 
+
+    @FXML
+    private Button handleOrdersBut;
+
     @FXML
     private Label labelSort;
 
@@ -201,6 +205,27 @@ public class ManagerSalesController {
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.setScene(new Scene(root,830,600));
+        stage.setTitle("Shop");
+        stage.show();
+    }
+
+    @FXML
+    void goToHandleOrder(ActionEvent event) {
+        handleOrdersBut.getScene().getWindow().hide();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/managerHandleOrders.fxml"));
+
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root,710,600));
         stage.setTitle("Shop");
         stage.show();
     }
