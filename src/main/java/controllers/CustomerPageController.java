@@ -3,13 +3,19 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import check.Dialog;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
+
 
 public class CustomerPageController {
 
@@ -21,6 +27,9 @@ public class CustomerPageController {
 
     @FXML
     private Button cartBut;
+
+    @FXML
+    private ImageView imageView;
 
     @FXML
     private Button catalogBut;
@@ -41,7 +50,8 @@ public class CustomerPageController {
 
     @FXML
     void initialize() {
-
+    Image image = new Image("/advertisment.png");
+    imageView.setImage(image);
     }
 
     @FXML
@@ -68,6 +78,7 @@ public class CustomerPageController {
 
     @FXML
     public void goToExit(ActionEvent event) {
+        Dialog.showConfirmationDialog("Выход","Выход", "Вы действительно хотите выйти?");
         exitButton.getScene().getWindow().hide();
 
         FXMLLoader loader = new FXMLLoader();

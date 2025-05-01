@@ -66,8 +66,10 @@ public class AdminPageController {
 
     @FXML
     void backToAuth(ActionEvent event){
-        exitButton.getScene().getWindow().hide();
         Dialog.showConfirmationDialog("Выход","Выход", "Вы действительно хотите выйти?");
+
+        exitButton.getScene().getWindow().hide();
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/authorization2.fxml"));
 

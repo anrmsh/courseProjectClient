@@ -153,7 +153,7 @@ public class ViewMyOrdersController {
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Подробности заказа");
-            alert.setHeaderText("Информация о заказе " + order.getOrderId()+ " от " + order.getOrderDate());
+            alert.setHeaderText("Информация о заказе № " + order.getOrderId()+ " от " + order.getOrderDate());
             alert.setContentText(message.toString());
             alert.showAndWait();
         } else{

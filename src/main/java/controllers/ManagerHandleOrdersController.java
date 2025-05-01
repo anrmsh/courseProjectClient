@@ -177,7 +177,7 @@ public class ManagerHandleOrdersController {
         backButton.getScene().getWindow().hide();
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/customerPage.fxml"));
+        loader.setLocation(getClass().getResource("/managerPage.fxml"));
 
 
         try {

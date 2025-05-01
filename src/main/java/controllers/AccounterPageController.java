@@ -3,6 +3,8 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import check.Dialog;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,10 +29,10 @@ public class AccounterPageController {
     private Button mainButt;
 
     @FXML
-    private Button salesBut;
+    private Button planBut;
 
     @FXML
-    private Button stockBut;
+    private Button reportBut;
 
 
 
@@ -41,6 +43,7 @@ public class AccounterPageController {
 
     @FXML
     public void goToExit(ActionEvent event) {
+        Dialog.showConfirmationDialog("Выход","Выход", "Вы действительно хотите выйти?");
         exitButton.getScene().getWindow().hide();
 
         FXMLLoader loader = new FXMLLoader();
@@ -60,6 +63,53 @@ public class AccounterPageController {
         stage.show();
 
     }
+
+    @FXML
+    public void goToAccounterReportPage(ActionEvent event) {
+        reportBut.getScene().getWindow().hide();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/accounterReport.fxml"));
+
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root,830,600));
+        stage.setTitle("Shop");
+        stage.show();
+
+    }
+
+    @FXML
+    public void goToFinPlanPage(ActionEvent event) {
+        planBut.getScene().getWindow().hide();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/accounterPlan.fxml"));
+
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root,830,600));
+        stage.setTitle("Shop");
+        stage.show();
+
+    }
+
+
+
 
 }
 

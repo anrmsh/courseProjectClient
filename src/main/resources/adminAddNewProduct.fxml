@@ -38,12 +38,12 @@
                   <Font name="ArnoPro-Display" size="19.0" />
                </font>
             </Label>
-            <Label layoutX="65.0" layoutY="111.0" text="Стоимость продажи:">
+            <Label layoutX="65.0" layoutY="111.0" text="Стоимость продажи BYN:">
                <font>
                   <Font name="ArnoPro-Display" size="19.0" />
                </font>
             </Label>
-            <Label layoutX="65.0" layoutY="179.0" text="Цена закупки товара:">
+            <Label layoutX="65.0" layoutY="179.0" text="Цена закупки товара BYN:">
                <font>
                   <Font name="ArnoPro-Display" size="19.0" />
                </font>

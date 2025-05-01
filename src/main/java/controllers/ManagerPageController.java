@@ -3,6 +3,8 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import check.Dialog;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,6 +35,7 @@ public class ManagerPageController {
 
     @FXML
     void goToExit(ActionEvent event) {
+        Dialog.showConfirmationDialog("Выход","Выход", "Вы действительно хотите выйти?");
         exitButton.getScene().getWindow().hide();
 
         FXMLLoader loader = new FXMLLoader();
@@ -47,7 +50,7 @@ public class ManagerPageController {
 
         Parent root = loader.getRoot();
         Stage stage = new Stage();
-        stage.setScene(new Scene(root,830,600));
+        stage.setScene(new Scene(root,700,600));
         stage.setTitle("Shop");
         stage.show();
     }

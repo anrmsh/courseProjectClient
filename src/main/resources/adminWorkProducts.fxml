@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -17,10 +16,6 @@
                         <Font size="17.0" />
                     </font>
                 </Button>
-                <Label fx:id="labelMessage" layoutX="714.0" layoutY="14.0" text="Label">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
                 <Button fx:id="addBut" layoutX="336.0" layoutY="67.0" mnemonicParsing="false" onAction="#goToAddProductPage" prefHeight="72.0" prefWidth="157.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Добавить новый товар" textAlignment="CENTER" textFill="#ffeef4" wrapText="true">
                     <font>
                         <Font size="17.0" />
@@ -36,7 +31,7 @@
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button fx:id="costBut" layoutX="327.0" layoutY="189.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="174.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Установить стоимость товара" textAlignment="CENTER" textFill="#ffeef4" wrapText="true">
+            <Button fx:id="costBut" layoutX="327.0" layoutY="189.0" mnemonicParsing="false" onAction="#goToChangeProductPricePage" prefHeight="72.0" prefWidth="174.0" style="-fx-background-color: #660066; -fx-border-color: #f45690; -fx-border-width: 3;" text="Установить стоимость товара" textAlignment="CENTER" textFill="#ffeef4" wrapText="true">
                <font>
                   <Font size="17.0" />
                </font>

@@ -349,7 +349,7 @@ public class CustomerViewCatalogController {
 
         Parent root = loader.getRoot();
         Stage stage = new Stage();
-        stage.setScene(new Scene(root,830,600));
+        stage.setScene(new Scene(root,700,600));
         stage.setTitle("Shop");
         stage.show();
 
@@ -381,7 +381,7 @@ public class CustomerViewCatalogController {
         });
     }
 
-    // Метод для отправки запроса на сервер
+
     private void sendPurchaseRequest(Product product, int quantity) {
         Request request = new Request();
         request.setRequestType(RequestType.ADD_TO_CART);

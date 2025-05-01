@@ -123,7 +123,7 @@ public class AuthorizationController {
             if ("Access Denied".equals(mes)) {
                 Dialog.showAlertErrorAuth1("Доступ закрыт!");
             } else if ("Incorrect Data".equals(mes)) {
-                Dialog.showAlertErrorAuth1("Неверные данные!");
+                Dialog.showAlertErrorAuth1("Пользователь с таким логином и паролем не найден!");
 
 
             } else {
@@ -133,9 +133,9 @@ public class AuthorizationController {
                 Session.setCurrentUser(user);
 
                 switch (mes) {
-                    case "Администратор" -> loader.setLocation(getClass().getResource("/adminMakeDiscount.fxml")); //adminPage
+                    case "Администратор" -> loader.setLocation(getClass().getResource("/adminPage.fxml"));
                     case "Менеджер" -> loader.setLocation(getClass().getResource("/managerPage.fxml"));
-                    case "Бухгалтер" -> loader.setLocation(getClass().getResource("/accounterReport.fxml"));
+                    case "Бухгалтер" -> loader.setLocation(getClass().getResource("/accounterPage.fxml"));
                     case "Покупатель" -> loader.setLocation(getClass().getResource("/customerPage.fxml"));
                     default -> loader.setLocation(getClass().getResource("/successRegistration.fxml"));
                 }

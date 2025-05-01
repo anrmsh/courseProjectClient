@@ -100,6 +100,26 @@ public class AdminWorkProductsController {
     }
 
     @FXML
+    void goToChangeProductPricePage(ActionEvent event) {
+        costBut.getScene().getWindow().hide();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/adminMakeDiscount.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root,830,600));
+        stage.setTitle("Shop");
+        stage.show();
+
+    }
+
+    @FXML
     void goToMainPageAdmin(ActionEvent event){
         backButton.getScene().getWindow().hide();
 

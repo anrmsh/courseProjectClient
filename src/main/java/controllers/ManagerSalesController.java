@@ -64,6 +64,23 @@ public class ManagerSalesController {
 
     @FXML
     void goToMainPageCustomer(ActionEvent event) {
+        backButton.getScene().getWindow().hide();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/managerPage.fxml"));
+
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root,700,600));
+        stage.setTitle("Shop");
+        stage.show();
 
     }
 

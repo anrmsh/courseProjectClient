@@ -79,7 +79,7 @@ public class AdminMakeDiscountController {
         backButton.getScene().getWindow().hide();
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/adminPage.fxml"));
+        loader.setLocation(getClass().getResource("/adminWorkProducts.fxml"));
 
         try {
             loader.load();

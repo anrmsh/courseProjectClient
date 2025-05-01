@@ -253,7 +253,6 @@ public class MakeOrderController {
 
     }
 
-
     private void generateOrderCheque(Order order, int orderID) {
         String fileName = "order_" + orderID + ".txt";
 
@@ -276,7 +275,7 @@ public class MakeOrderController {
                 int quantity = item.getQuantity();
                 double price = item.getProduct().getSellPrice();
                 double total = price * quantity;
-                writer.printf("%s x %d = %.2f BYN\n", productName, quantity, total);
+                writer.printf("%s %.2f x %d = %.2f BYN\n", productName, price, quantity, total);
             }
 
             writer.println("-------------------------------");
@@ -289,6 +288,8 @@ public class MakeOrderController {
         }
 
     }
+
+
 
 }
 

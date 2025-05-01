@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import ClientWorker.Connect;
+import ClientWorker.Session;
 import Enums.RequestType;
 import Enums.ResponseStatus;
 import TCP.Request;
@@ -19,10 +20,14 @@ import decorator.RecommendationDecorator;
 import decorator.ReportDecorator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -82,13 +87,25 @@ public class AccounterReportController {
 
     @FXML
     void goToMainPageAccounter(ActionEvent event) {
+        backButton.getScene().getWindow().hide();
 
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/accounterPage.fxml"));
+
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root,700,600));
+        stage.setTitle("Shop");
+        stage.show();
     }
 
-    @FXML
-    void removeParamButt(ActionEvent event) {
-
-    }
 
     @FXML
     void initialize() {
@@ -113,6 +130,16 @@ public class AccounterReportController {
             double other = parseFinancial(otherExpensesField.getText());
             double rateTax = parseFinancial(taxRateField.getText());
 
+            Request request1 = new Request();
+            request1.setRequestType(RequestType.GET_ACCOUNTER_LASTNAME);
+            int userID = Session.getUserId();
+            String userLogin = Session.getUserLogin();
+            System.out.println(userLogin);
+            request1.setRequestMessage(userLogin);
+            Connect.client.sendObject(request1);
+
+            Response response1 = (Response) Connect.client.readObject();
+            textNameAccounter.setText(response1.getResponseMessage());
 //decorator from gpt officuial
 //            Report report = new BaseReport(revenue, expense, other, rate);
 //            report = new RecommendationDecorator(report); // декоратор

@@ -141,7 +141,7 @@ public class AccounterPlanController {
         backButton.getScene().getWindow().hide();
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/adminPage.fxml"));
+        loader.setLocation(getClass().getResource("/accounterPage.fxml"));
 
         try {
             loader.load();

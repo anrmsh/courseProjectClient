@@ -143,6 +143,29 @@ public class ManagerRestockController {
             amountWarehouseCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
             /**/
+//            amountWarehouseCol.setCellFactory(new Callback<TableColumn<Product, Integer>, TableCell<Product, Integer>>() {
+//                @Override
+//                public TableCell<Product, Integer> call(TableColumn<Product, Integer> param) {
+//                    return new TableCell<Product, Integer>() {
+//                        @Override
+//                        protected void updateItem(Integer item, boolean empty) {
+//                            super.updateItem(item, empty);
+//                            if (empty || item == null) {
+//                                setText(null);
+//                                setStyle(""); // сбрасываем стиль
+//                            } else {
+//                                setText(item.toString());
+//                                if (item < 3) {
+//                                    setStyle("-fx-background-color: rgba(255, 0, 0, 0.5);"); // Полупрозрачный красный
+//                                } else {
+//                                    setStyle(""); // сбрасываем стиль
+//                                }
+//                            }
+//                        }
+//                    };
+//                }
+//            });
+
             amountWarehouseCol.setCellFactory(new Callback<TableColumn<Product, Integer>, TableCell<Product, Integer>>() {
                 @Override
                 public TableCell<Product, Integer> call(TableColumn<Product, Integer> param) {
@@ -152,21 +175,20 @@ public class ManagerRestockController {
                             super.updateItem(item, empty);
                             if (empty || item == null) {
                                 setText(null);
-                                setStyle(""); // сбрасываем стиль
+                                setStyle("");
                             } else {
                                 setText(item.toString());
-                                // Условия для изменения цвета фона
+                                TableRow<Product> currentRow = getTableRow();
                                 if (item < 3) {
-                                    setStyle("-fx-background-color: rgba(255, 0, 0, 0.5);"); // Полупрозрачный красный
+                                    currentRow.setStyle("-fx-background-color: rgba(255, 0, 0, 0.5);"); // Полупрозрачный красный
                                 } else {
-                                    setStyle(""); // сбрасываем стиль
+                                    currentRow.setStyle("");
                                 }
                             }
                         }
                     };
                 }
             });
-
 
             /**/
 
@@ -218,7 +240,7 @@ public class ManagerRestockController {
             /**/
 
             tableProducts.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2) { // Двойной щелчок для выбора
+                if (event.getClickCount() == 2) {
                     Product selectedProduct = tableProducts.getSelectionModel().getSelectedItem();
                     if (selectedProduct != null) {
                         showPurchaseDialog(selectedProduct);
@@ -362,7 +384,7 @@ public class ManagerRestockController {
         }
 
 
-        tableProducts.setItems(productsList);  // Обновляем таблицу
+        tableProducts.setItems(productsList);
     }
 
 
@@ -371,7 +393,7 @@ public class ManagerRestockController {
         backButton.getScene().getWindow().hide();
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/customerPage.fxml"));
+        loader.setLocation(getClass().getResource("/managerPage.fxml"));
 
 
         try {
@@ -382,7 +404,7 @@ public class ManagerRestockController {
 
         Parent root = loader.getRoot();
         Stage stage = new Stage();
-        stage.setScene(new Scene(root,830,600));
+        stage.setScene(new Scene(root,700,600));
         stage.setTitle("Shop");
         stage.show();
 

@@ -133,8 +133,9 @@ public class AdminAddNewProductController {
             product.setSellPrice(sellPrice);
             product.setCost(cost);
         } catch (NumberFormatException e) {
-            labelMessage.setText("Неверный ввод! Заполните цену/стоимость цифрой");
-            labelMessage.setVisible(true);
+            Dialog.showAlert("Error","Неверный ввод! Заполните цену/стоимость цифрой");
+            //labelMessage.setText("Неверный ввод! Заполните цену/стоимость цифрой");
+            //labelMessage.setVisible(true);
             return;
         }
 
